@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pixlate - Centro de Impresión y Servicios Universitarios</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              naranjaPrimario: '#FF4D00',
+              naranjaHover: '#E6440A',
+              naranjaClaro: '#FF6B35',
+              azulOscuro: '#1B2951',
+              azulMedio: '#2A3B6B',
+              azulAcento: '#4A90E2',
+              blanco: '#FFFFFF',
+              grisUltraClaro: '#FAFAFB',
+              grisClaro: '#F7F9FC',
+              grisMedio: '#E2E8F0',
+              grisTexto: '#64748B',
+              grisOscuro: '#334155',
+              negroSuave: '#0F172A',
+            },
+            fontFamily: {
+              poppins: ['Poppins', 'sans-serif'],
+              inter: ['Inter', 'sans-serif'],
+            },
+            keyframes: {
+                pulse: {
+                    '0%, 100%': { opacity: 1 },
+                    '50%': { opacity: 0 },
+                },
+                bounce: {
+                    '0%, 100%': { transform: 'translateY(-25%)', animationTimingFunction: 'cubic-bezier(0.8, 0, 1, 1)' },
+                    '50%': { transform: 'translateY(0)', animationTimingFunction: 'cubic-bezier(0, 0, 0.2, 1)' },
+                },
+                float: {
+                    '0%, 100%': { transform: 'translateY(0px)' },
+                    '50%': { transform: 'translateY(-20px)' },
+                },
+                slideInFromRight: {
+                    '0%': { transform: 'translateX(50px)', opacity: '0' },
+                    '100%': { transform: 'translateX(0)', opacity: '1' },
+                }
+            },
+            animation: {
+                pulse: 'pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                bounce: 'bounce 1s infinite',
+                float: 'float 6s ease-in-out infinite',
+                slideInFromRight: 'slideInFromRight 1s ease-out forwards',
+            }
+          }
+        }
+      }
+    </script>
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.544.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body class="bg-white font-inter text-grisTexto">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+</body>
+</html>
