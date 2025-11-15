@@ -85,7 +85,9 @@ const Footer: React.FC = () => {
                 </div>
 
                 <div className="border-t border-white/20 pt-6 mt-8 flex justify-center text-center">
-                    <p className="text-sm text-gray-400">&copy; 2025 Pixlate. Todos los derechos reservados.</p>
+                    <p className="text-sm text-gray-400">
+                        &copy; 2025 Pixlate by <span className="font-semibold text-white">Inspyrio</span>. Todos los derechos reservados.
+                    </p>
                 </div>
             </div>
         </footer>
