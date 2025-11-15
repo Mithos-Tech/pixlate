@@ -11,7 +11,8 @@ const Footer: React.FC = () => {
 
     // NOTE: In a real project deployed with Vite/Next.js, use an environment variable.
     // Example: const whatsappNumber = import.meta.env.VITE_WHATSAPP_NUMBER;
-    const whatsappLink = `https://wa.me/51987654321`;
+    const whatsappNumber = import.meta.env.VITE_WHATSAPP_NUMBER || '51987654321';
+    const whatsappLink = `https://wa.me/${whatsappNumber}`;
 
     const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
         e.preventDefault();

@@ -7,7 +7,8 @@ const Hero: React.FC = () => {
     
     // NOTE: In a real project deployed with Vite/Next.js, use an environment variable.
     // Example: const whatsappNumber = import.meta.env.VITE_WHATSAPP_NUMBER;
-    const whatsappLink = `https://wa.me/51987654321?text=¡Hola!%20Me%20interesa%20cotizar%20un%20servicio`;
+    const whatsappNumber = import.meta.env.VITE_WHATSAPP_NUMBER || '51987654321';
+    const whatsappLink = `https://wa.me/${whatsappNumber}?text=¡Hola!%20Me%20interesa%20cotizar%20un%20servicio`;
 
     useEffect(() => {
         if (typedText.length < fullText.length) {
