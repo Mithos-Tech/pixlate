@@ -39,52 +39,34 @@ const Contact: React.FC = () => {
 
     // 📤 Manejar envío del formulario
     const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setSubmitStatus('idle');
-    
-    // Endpoint de Formspark desde variables de entorno
-    const formsparkEndpoint = import.meta.env.VITE_FORMSPARK_FORM_ID 
-        ? `https://submit-form.com/${import.meta.env.VITE_FORMSPARK_FORM_ID}`
-        : '';
+        e.preventDefault();
+        setIsSubmitting(true);
+        setSubmitStatus('idle');
+        
+        try {
+            const response = await fetch(formspreeEndpoint, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            });
 
-    if (!formsparkEndpoint) {
-        console.error('Formspark Form ID no configurado');
-        setSubmitStatus('error');
-        setIsSubmitting(false);
-        return;
-    }
-    
-    try {
-        const response = await fetch(formsparkEndpoint, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            },
-            body: JSON.stringify({
-                name: formData.name,
-                email: formData.email,
-                subject: formData.subject,
-                message: formData.message,
-                _redirect: false // Importante: evita redirección automática
-            })
-        });
-
-        if (response.ok) {
-            setSubmitStatus('success');
-            setFormData({ name: '', email: '', subject: '', message: '' });
-        } else {
+            if (response.ok) {
+                setSubmitStatus('success');
+                setFormData({ name: '', email: '', subject: '', message: '' });
+            } else {
+                setSubmitStatus('error');
+            }
+        } catch (error) {
+            console.error('Error al enviar formulario:', error);
             setSubmitStatus('error');
+        } finally {
+            setIsSubmitting(false);
+            // Resetear mensaje después de 5 segundos
+            setTimeout(() => setSubmitStatus('idle'), 5000);
         }
-    } catch (error) {
-        console.error('Error al enviar formulario:', error);
-        setSubmitStatus('error');
-    } finally {
-        setIsSubmitting(false);
-        setTimeout(() => setSubmitStatus('idle'), 5000);
-    }
-};
+    };
 
     return (
         <section id="contacto" className="py-20 text-white" style={{ background: 'linear-gradient(135deg, #1B2951 0%, #2A3B6B 100%)' }}>
